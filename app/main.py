@@ -1,11 +1,10 @@
-from .database import Base, SessionLocal, engine
+from database import Base, SessionLocal, engine
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from .utils import add_user_rate_to_db, update_comic_rating, fetch_comic_rating
+from utils import add_user_rate_to_db, update_comic_rating, fetch_comic_rating
 import uvicorn
 
 
-Base.metadata.create_all(bind=engine)
 app = FastAPI(docs_url="/api/docs")
 
 
@@ -19,7 +18,7 @@ def get_db():
     
 
 @app.post("/api/ratings", summary="Оценить комикс", response_model=dict)
-def rate(comic_id: int, user_id: int, value: int | float, db: Session = Depends(get_db)):
+def rate_comic(comic_id: int, user_id: int, value: int | float, db: Session = Depends(get_db)):
     if (value < 1) or (value > 5):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -55,4 +54,5 @@ def root():
 
 
 if __name__ == "__main__":
+    Base.metadata.create_all(bind=engine)
     uvicorn.run("main:app", host="0.0.0.0", port=8081, reload=True)
