@@ -6,7 +6,7 @@ import uvicorn
 
 
 Base.metadata.create_all(bind=engine)
-app = FastAPI()
+app = FastAPI(docs_url="/api/docs")
 
 
 # Dependency
