@@ -6,8 +6,8 @@ class Comic(Base):
     __tablename__ = "comics"
 
     id = Column(Integer, primary_key=True, unique=True)
-    title = Column(String)
-    author = Column(String)
+    title = Column(String, nullable=True)
+    author = Column(String, nullable=True)
     rating = Column(Float)
 
 
