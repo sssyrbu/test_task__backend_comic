@@ -2,7 +2,7 @@ from database import Base, SessionLocal, engine
 from models.schemas import Comic, User, Rating
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from utils import add_user_rate_to_db, update_comic_rating
+from utils import add_user_rate_to_db, update_comic_rating, fetch_comic_rating
 import uvicorn
 
 
@@ -36,9 +36,16 @@ def rate(comic_id: int, user_id: int, value: int | float, db: Session = Depends(
     }
 
 
-@app.get("/api/comics/{comic_id}/rating/", summary="", response_model=dict)
-def comic_rating(comic_id: int, db: Session = Depends(get_db)):
-    pass
+@app.get("/api/comics/{comic_id}/rating/", summary="Узнать рейтинг комикса", response_model=dict)
+def get_comic_rating(comic_id: int, db: Session = Depends(get_db)):
+    comic_rating = fetch_comic_rating(db, comic_id)
+    if comic_rating:
+        return {"comic_rating": comic_rating}
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Комикса с данным айди не существует"
+        )
 
 
 @app.get("/", response_model=dict)

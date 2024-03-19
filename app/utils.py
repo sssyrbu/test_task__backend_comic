@@ -34,3 +34,12 @@ def update_comic_rating(db: Session, comic_id: int) -> None:
     except SQLAlchemyError:
         db.rollback()
         raise
+
+
+def fetch_comic_rating(db: Session, comic_id: int) -> float | None:
+    existing_comic = db.query(db_models.Comic).filter_by(id=comic_id).first()
+    if existing_comic:
+        comic_rating = existing_comic.rating
+        return comic_rating
+
+    return None
