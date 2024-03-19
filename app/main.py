@@ -1,7 +1,7 @@
-from database import Base, SessionLocal, engine
+from .database import Base, SessionLocal, engine
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from utils import add_user_rate_to_db, update_comic_rating, fetch_comic_rating
+from .utils import add_user_rate_to_db, update_comic_rating, fetch_comic_rating
 import uvicorn
 
 

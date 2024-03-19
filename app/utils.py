@@ -1,4 +1,4 @@
-from models import db_models 
+from .models import db_models 
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 
