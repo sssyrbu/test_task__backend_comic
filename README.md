@@ -55,9 +55,15 @@ coming....
 
 ## Тесты
 Повторяем первые 6 шагов из локального запуска.
+
 7. Запускаем тесты
   ```
   pytest tests/
   ```
+
+Успешный тест:
+
+![image](https://github.com/sssyrbu/test_task__backend_comic/assets/68150627/8f4936a4-6c32-454f-9cb7-fb66917efccc)
+
 
 
