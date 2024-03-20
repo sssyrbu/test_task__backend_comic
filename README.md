@@ -19,4 +19,45 @@
 
 ![image](https://github.com/sssyrbu/test_task__backend_comic/assets/68150627/37ff6776-21e2-458d-9eea-b507075e597a)
 
+## Запуск
+### Локально (на UNIX системах)
+1. Клонируем репозиторий
+   ```
+   git clone https://github.com/sssyrbu/test_task__backend_comic/
+   ```
+2. Перейдем в директорию проекта
+   ```
+   cd test_task__backend_comic/
+   ```
+3. Создадим виртуальное окружение
+   ```
+   python3 -m venv venv
+   ```
+4. Зайдем в виртуальное окружение
+   ```
+   source venv/bin/activate
+   ```
+5. Установим зависимости
+   ```
+   pip install -r requirements.txt
+   ```
+6. Перейдем в директорию с кодом
+   ```
+   cd app/
+   ```
+7. Запустим это приложение
+   ```
+   python3 main.py
+   ```
+
+### Docker
+coming....
+
+## Тесты
+Повторяем первые 6 шагов из локального запуска.
+7. Запускаем тесты
+  ```
+  pytest tests/
+  ```
+
 
