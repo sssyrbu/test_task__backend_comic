@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+import httpx
 from main import app, get_db
 from .testdb import Base, engine, TestingSessionLocal
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
@@ -21,9 +22,10 @@ class Rating(Base):
     user_id = Column(Integer)
     value = Column(Float)
 
+
 Base.metadata.create_all(bind=engine)
 
-client = TestClient(app)
+client = TestClient(app=app)
 
 
 def override_get_db():
