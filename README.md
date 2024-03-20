@@ -51,7 +51,27 @@
    ```
 
 ### Docker
-coming....
+В Dockerfile я включил сразу запуск тестов и последующий запуск. Результат тестов выводится в терминале при запуске контейнера, после чего запускается приложение по адресу http://0.0.0.0:8081
+1. Клонируем репозиторий
+   ```
+   git clone https://github.com/sssyrbu/test_task__backend_comic/
+   ```
+2. Перейдем в директорию проекта
+   ```
+   cd test_task__backend_comic/
+   ```
+3. Создаем docker image
+   ```
+   docker build -t comic_api .
+   ```
+4. Запускаем контейнер
+   ```
+   docker run -p 8081:8081 comic_api
+   ```
+   
+Успешный запуск docker контейнера:
+
+![image](https://github.com/sssyrbu/test_task__backend_comic/assets/68150627/669ad05e-dce5-4ef3-9e60-9258a1670a68)
 
 ## Тесты
 Повторяем первые 6 шагов из [локального запуска](https://github.com/sssyrbu/test_task__backend_comic/blob/master/README.md#%D0%BB%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D0%BD%D0%B0-unix-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%D1%85).
@@ -66,4 +86,11 @@ coming....
 ![image](https://github.com/sssyrbu/test_task__backend_comic/assets/68150627/8f4936a4-6c32-454f-9cb7-fb66917efccc)
 
 
+### Адрес
+http://0.0.0.0:8081/
+### UI docs
+http://0.0.0.0:8081/api/docs
+
+
+![image](https://github.com/sssyrbu/test_task__backend_comic/assets/68150627/fd8db20a-aac0-4e93-aaae-65274a230d47)
 
